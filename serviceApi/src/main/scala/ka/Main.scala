@@ -17,9 +17,6 @@ object Main extends App with StrictLogging {
   implicit val system = ActorSystem(Behaviors.empty, "service-api")
   implicit val ec: ExecutionContext = system.dispatchers.lookup(DispatcherSelector.fromConfig("blocking-io-dispatcher"))
   val api = new Api
-  val bindingFuture = Http().newServerAt(host, port).bind(api.route)
-  StdIn.readLine()
-  bindingFuture
-    .flatMap(_.unbind())
-    .onComplete(_ => system.terminate())
+  Http().newServerAt(host, port).bind(api.route)
+
 }

@@ -33,3 +33,8 @@ services:
       KAFKA_JMX_PORT: 9101
       KAFKA_JMX_HOSTNAME: kafka
 
+  customer-api:
+    image: serviceapi:1.0.0
+    ports:
+      - "8090:8090"
+    restart: on-failure
