@@ -6,9 +6,11 @@ lazy val serviceApi = project.settings(
   libraryDependencies ++= Seq(
     Dependencies.AkkaHttp,
     Dependencies.AkkaActorTyped,
+    Dependencies.AkkaStream,
+    Dependencies.ScalaLogging,
     Dependencies.LogBack,
   ),
-  dockerExposedPorts := Seq(8080),
+  dockerExposedPorts := Seq(8090),
 )
 
 lazy val root = (project in file("."))
