@@ -38,3 +38,9 @@ services:
     ports:
       - "8090:8090"
     restart: on-failure
+
+  waiter:
+    image: waiter:1.0.0
+    ports:
+      - "8091:8091"
+    restart: on-failure

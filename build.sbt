@@ -13,8 +13,21 @@ lazy val serviceApi = project
   )
   .enablePlugins(JavaAppPackaging)
 
+lazy val waiter = project
+  .settings(
+    libraryDependencies ++= Seq(
+      Dependencies.AkkaHttp,
+      Dependencies.AkkaActorTyped,
+      Dependencies.AkkaStream,
+      Dependencies.ScalaLogging,
+      Dependencies.LogBack,
+    ),
+    dockerExposedPorts := Seq(8091),
+  )
+  .enablePlugins(JavaAppPackaging)
+
 lazy val root = (project in file("."))
   .settings(
     name := "kafka-avro",
   )
-  .aggregate(serviceApi)
+  .aggregate(serviceApi, waiter)
